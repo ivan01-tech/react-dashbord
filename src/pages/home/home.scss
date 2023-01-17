@@ -1,0 +1,10 @@
+.home {
+  flex: 6;
+
+  .cards {
+    padding: 2rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
