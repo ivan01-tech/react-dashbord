@@ -1,0 +1,57 @@
+.single-wrapper {
+  margin: 1rem;
+  padding: 1rem;
+
+  .top {
+    display: flex;
+    gap: 1rem;
+    box-shadow: 2px 4px 15px 1px rgba(36, 32, 32, 0.2);
+  }
+  .left {
+    flex: 3;
+    box-shadow: 1px 2px 15px 1px rgba(36, 32, 32, 0.2);
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 0.5rem;
+      color: gray;
+      .edit {
+        padding: 0.3rem 1rem;
+        cursor: pointer;
+        background-color: rgba(128, 0, 128, 0.137);
+        color: purple;
+      }
+    }
+    .user-info {
+      display: flex;
+      padding: 1rem 0.2rem;
+      & > :nth-child(1) {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      .info {
+        flex: 1.5;
+        color: gray;
+        & * {
+          padding: 0.3rem 0rem;
+        }
+      }
+    }
+  }
+  .right {
+    box-shadow: 1px 2px 15px 1px rgba(36, 32, 32, 0.2);
+    flex: 5;
+  }
+
+  .bottom {
+    margin: 2rem 1rem;
+  }
+}

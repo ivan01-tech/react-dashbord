@@ -25,6 +25,7 @@ function Card({ type }) {
     case "balance":
       content = {
         title: "my balance",
+        isMoney: true,
         icon: (
           <AccountBalanceWalletOutlinedIcon style={{ color: `rgb(255,0,0)` }} />
         ),
@@ -38,6 +39,8 @@ function Card({ type }) {
     case "earnings":
       content = {
         title: "earnings",
+        isMoney: true,
+
         icon: (
           <MonetizationOnOutlinedIcon style={{ color: `rgb(0, 128, 0)` }} />
         ),
@@ -64,9 +67,7 @@ function Card({ type }) {
       break;
   }
 
-  let price = type === "earnings" || type === "balance" ? "$ " : "";
-  price += content.price;
-  price += type === "earnings" || type === "balance" ? "k" : "";
+  let price = content.isMoney ? "$ " + content.price + " k" : content.price;
 
   return (
     <article className="card">
@@ -80,7 +81,6 @@ function Card({ type }) {
           {content.arrow}
           <span>+12 %</span>
         </div>
-
         <div
           style={{ backgroundColor: `rgba(${content.color},0.4)` }}
           className="icon"

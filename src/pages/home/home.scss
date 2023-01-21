@@ -1,10 +1,18 @@
 .home {
-  flex: 6;
-
+  width: 100%;
   .cards {
     padding: 2rem 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .listtable {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    box-shadow: 2px 4px 11px 4px rgba(88, 84, 84, 0.2);
+    .title {
+      color: gray;
+    }
   }
 }

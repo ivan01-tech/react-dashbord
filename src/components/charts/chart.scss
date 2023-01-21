@@ -43,6 +43,8 @@
         bottom: 5px;
         left: 5px;
         right: 5px;
+        font-size: 1.5rem;
+        font-weight: 600;
         background-color: white;
         border-radius: 50%;
         display: flex;
@@ -52,6 +54,8 @@
     }
     .title {
       font-size: 2rem;
+      color: black;
+      font-weight: bold;
     }
     .footer {
       display: flex;
@@ -77,10 +81,10 @@
         }
       }
       .positive {
-        color: rgba(0, 128, 0, 0.5);
+        color: green;
       }
       .negative {
-        color: rgba(255, 0, 0, 0.404);
+        color: crimson;
       }
     }
   }

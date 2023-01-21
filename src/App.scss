@@ -1,5 +1,27 @@
-#root{
-	display: flex;
-	width: 100vw;
-	height: 100vh;
+@import "../color.scss";
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  transition: all 0.1s;
+  display: flex;
+  width: 100vw;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .dark {
+    background-color: $primary-dark;
+    color: $text-dark;
+  }
+
+  .contentWrap {
+    flex: 6;
+  }
 }

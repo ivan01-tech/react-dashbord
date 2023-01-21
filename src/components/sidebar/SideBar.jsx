@@ -8,29 +8,57 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
 import ClosedCaptionOffOutlinedIcon from "@mui/icons-material/ClosedCaptionOffOutlined";
+import { NavLink } from "react-router-dom";
+import { useThemeContextProvider } from "../../context/ThemeContext";
 
 function SideBar() {
+  const { themeMode } = useThemeContextProvider();
+  const mode = themeMode.isDarkMode ? "dark" : "";
+
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${mode}`}>
       <div className="logo">
-        <span>Ivan01-Admin</span>
+        <NavLink
+          to={"/home"}
+          className={({ isActive }) => (isActive ? "activeClassName" : "")}
+        >
+          <span>Ivan01admin</span>
+        </NavLink>
       </div>
-      <hr />
+
       <ul className="center">
         <p className="title">main</p>
-        <li>
-          <DashboardIcon className="icon" />
-          <span>DashBord</span>
-        </li>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => (isActive ? "activeClassName" : "")}
+        >
+          <li>
+            <DashboardIcon className="icon" />
+            <span>DashBord</span>
+          </li>
+        </NavLink>
+
         <p className="title">List</p>
-        <li>
-          <PersonOutlineOutlinedIcon className="icon" />
-          <span>Users</span>
-        </li>
-        <li>
-          <ProductionQuantityLimitsOutlinedIcon className="icon" />
-          <span>Products</span>
-        </li>
+        <NavLink
+          to={"/users"}
+          className={({ isActive }) => (isActive ? "activeClassName" : "")}
+        >
+          <li>
+            <PersonOutlineOutlinedIcon className="icon" />
+            <span>Users</span>
+          </li>
+        </NavLink>
+
+        <NavLink
+          to={"/product"}
+          className={({ isActive }) => (isActive ? "activeClassName" : "")}
+        >
+          <li>
+            <ProductionQuantityLimitsOutlinedIcon className="icon" />
+            <span>Products</span>
+          </li>
+        </NavLink>
+
         <li>
           <ClosedCaptionOffOutlinedIcon className="icon" />
           <span>Orders</span>

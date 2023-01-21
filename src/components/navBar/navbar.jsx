@@ -8,12 +8,21 @@ import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
+import {
+  TOOGLE_MODE,
+  useThemeContextProvider,
+} from "../../context/ThemeContext";
+
 function Navbar() {
+  const { themeMode, dispatch } = useThemeContextProvider();
+  const mode = themeMode.isDarkMode ? "dark" : "";
+
   return (
     <nav>
       <div className="input">
         <div>
-          <input type="text" placeholder="Search here..." />
+          <input type="text" placeholder="Search here..." className={mode} />
           <SearchOutlinedIcon />
         </div>
       </div>
@@ -22,8 +31,17 @@ function Navbar() {
           <LanguageOutlinedIcon />
           <span>English</span>
         </div>
-        <div>
-          <WbSunnyOutlinedIcon />
+        <div
+          className="toogle-mode"
+          onClick={() => dispatch({ type: TOOGLE_MODE })}
+        >
+          <span>
+            {mode ? (
+              <WbSunnyOutlinedIcon style={{ color: "orange" }} />
+            ) : (
+              <DarkModeRoundedIcon />
+            )}
+          </span>
         </div>
         <div className="notification">
           <NotificationsOutlinedIcon />

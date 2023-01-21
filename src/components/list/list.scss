@@ -1,0 +1,36 @@
+.list {
+  margin: 1rem 0.5rem;
+
+  .list-item {
+    color: gray;
+    font-weight: 700;
+  }
+  .list-product div {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .status {
+    width: 70%;
+    font-weight: 700;
+    padding: 3px 0.5rem;
+    text-align: center;
+    border-radius: 4px;
+
+    &.pending {
+      color: goldenrod;
+      background-color: rgba(218, 165, 32, 0.247);
+    }
+    &.active {
+      color: green;
+      background-color: rgba(0, 128, 0, 0.226);
+    }
+  }
+}
