@@ -1,13 +1,13 @@
 export const columns = [
-  { field: "id", headerName: "ID", width: 60 },
+  { field: "id", headerName: "ID", width: 100 },
   {
-    field: "user",
+    field: "username",
     headerName: "User",
-    width: 230,
+    width: 130,
     renderCell: function (params) {
       return (
         <div className="cellWithImage">
-          <img src={params.row.img} className="cellImg" alt="Avatar" />
+          <img src={params.row.image} className="cellImg" alt="Avatar" />
           {params.row.username}
         </div>
       );
@@ -16,25 +16,38 @@ export const columns = [
   {
     field: "email",
     headerName: "Email",
-    width: 230,
+    width: 130,
   },
   {
-    field: "age",
-    headerName: "Age",
-    type: "number",
+    field: "address",
+    headerName: "Address",
     width: 100,
   },
-
+  {
+    headerName: "Name and Surname",
+    field: "nameandsurname",
+    width: 200,
+  },
+  {
+    headerName: "Country",
+    field: "country",
+    width: 100
+  },
   {
     field: "status",
     headerName: "Status",
     width: 160,
-    renderCell: (params) =>
-      <div className={`cellWithStatus ${params.row.status}`}>
-        {params.row.status}
+    renderCell: (params) => {
+      const status = ["pending", "active", "passive"][generateStatus()]
+      return <div className={`cellWithStatus ${status}`}>
+        {status}
       </div >
+    }
   },
 ];
+
+const generateStatus = () => Math.round(Math.random() * 2)
+
 
 export const rows = [
   {
@@ -44,7 +57,7 @@ export const rows = [
     status: "active",
     user: "Jon",
     age: 35,
-    img: "c",
+    image: "c",
   },
   {
     id: 2,

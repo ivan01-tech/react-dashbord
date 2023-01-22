@@ -1,0 +1,38 @@
+.login-form {
+  .error {
+    color: red;
+    font-size: 0.9rem;
+  }
+  flex: 6;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    .inputItem {
+      width: 300px;
+      input {
+        width: 100%;
+        border-radius: 4px;
+        padding: 0.5rem 0.7rem;
+        border: 1px solid lightgray;
+      }
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-weight: 700;
+      font-size: medium;
+      background-color: rgba(94, 17, 138, 0.63);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  }
+}

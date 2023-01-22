@@ -1,6 +1,12 @@
 .new {
   padding: 1rem;
   margin: 1rem;
+  .error {
+    padding: 0.5rem 1rem;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.219);
+    border-radius: 5px;
+  }
   .head {
     margin-bottom: 1rem;
     // color: lightgray;
@@ -68,6 +74,10 @@
       border: none;
       cursor: pointer;
       border-radius: 4px;
+    }
+    button:disabled {
+      background-color: rgba(6, 63, 63, 0.349);
+      cursor: not-allowed;
     }
   }
 }

@@ -27,7 +27,7 @@ function TableList() {
 
   const rows = [
     createData(
-      345767,
+      34767,
       "ASUS ROG Car",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
       "Kakeu Ivan01",
@@ -37,7 +37,7 @@ function TableList() {
       "active"
     ),
     createData(
-      235767,
+      23576,
       "ASUS ROG Strix",
       "https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg",
       "Djiokeng Sonia",
@@ -47,7 +47,7 @@ function TableList() {
       "pending"
     ),
     createData(
-      345767,
+      45767,
       "ASUS ROG Car",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
       "Kakeu Ivan01",
@@ -57,7 +57,7 @@ function TableList() {
       "active"
     ),
     createData(
-      235767,
+      23767,
       "ASUS ROG Strix",
       "https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg",
       "Djiokeng Sonia",
@@ -67,7 +67,7 @@ function TableList() {
       "pending"
     ),
     createData(
-      345767,
+      3467,
       "ASUS ROG Car",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
       "Kakeu Ivan01",

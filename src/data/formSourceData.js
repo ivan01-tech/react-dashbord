@@ -1,44 +1,51 @@
 export const userSource = [
 	{
 		type: "text",
+		required: true,
 		label: "Username",
-		id: "1",
+		id: "username",
 		placeholder: "john_doe"
 	},
 	{
 		type: "text",
+		required: true,
 		label: "Phone",
-		id: "2",
+		id: "phone",
 		placeholder: "+237 686 967 978"
 	},
 	{
 		type: "text",
+		required: true,
 		label: "Address",
-		id: "3",
+		id: "address",
 		placeholder: "Douala pk17"
 	},
 	{
 		type: "email",
+		required: true,
 		label: "Email",
-		id: "4",
+		id: "email",
 		placeholder: "john_doe@gmail.com"
 	},
 	{
 		type: "text",
+		required: true,
 		label: "Name and Surname",
-		id: "5",
+		id: "nameandsurname",
 		placeholder: "Joh Doe"
 	},
 	{
 		type: "text",
+		required: true,
 		label: "Country",
-		id: "6",
+		id: "country",
 		placeholder: "Cameroun"
 	},
 	{
 		type: "password",
+		required: true,
 		label: "Password",
-		id: "7",
+		id: "password",
 		placeholder: ""
 	}
 ]
@@ -47,28 +54,32 @@ export const userSource = [
 export const productsSource = [
 	{
 		type: "text",
+		required: true,
 		label: "Title",
-		id: "1",
+		id: "title",
 		placeholder: "Appel SM Pro"
 	},
 	{
 		type: "number",
+		required: true,
 		label: "Price",
-		id: "2",
+		id: "price",
 		placeholder: "230",
 		min: 1, max: 10000, step: 5
 
 	},
 	{
 		type: "text",
+		required: true,
 		label: "Society",
-		id: "3",
+		id: "society",
 		placeholder: "Cameroun"
 	},
 	{
 		type: "number",
+		required: true,
 		label: "Qauntity",
-		id: "4",
+		id: "qauntity",
 		placeholder: "2"
 	}
 ]

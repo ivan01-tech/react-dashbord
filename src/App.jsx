@@ -9,6 +9,8 @@ import DataTable from "./components/datatable/DataTable";
 import SinglePage from "./pages/single/SinglePage";
 import { productsSource, userSource } from "./data/formSourceData";
 import { useThemeContextProvider } from "./context/ThemeContext";
+import LoginForm from "./pages/login/LoginForm";
+import RequiredAuth from "./components/auth/RequiredAuth";
 
 function App() {
   const { themeMode } = useThemeContextProvider();
@@ -19,9 +21,11 @@ function App() {
       <div className={`contentWrap ${mode}`}>
         <Navbar />
         <Routes>
-          <Route path="/">
-            <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginForm />} />
 
+          {/* Protected Routes */}
+          <Route path="/" element={<RequiredAuth />}>
+            <Route index element={<HomePage />} />
             <Route path="product">
               <Route index element={<ProductsPage />} />
               <Route
@@ -47,6 +51,7 @@ function App() {
               <Route path=":id" element={<SinglePage />} />
             </Route>
           </Route>
+
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
       </div>

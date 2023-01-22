@@ -1,3 +1,14 @@
+.error {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+  }
+}
+
 .single-wrapper {
   margin: 1rem;
   padding: 1rem;

@@ -10,20 +10,21 @@ import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/Production
 import ClosedCaptionOffOutlinedIcon from "@mui/icons-material/ClosedCaptionOffOutlined";
 import { NavLink } from "react-router-dom";
 import { useThemeContextProvider } from "../../context/ThemeContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 function SideBar() {
   const { themeMode } = useThemeContextProvider();
+  const { logout } = useAuthContext();
   const mode = themeMode.isDarkMode ? "dark" : "";
+
+  const handleLogout = async function () {
+    await logout();
+  };
 
   return (
     <aside className={`sidebar ${mode}`}>
       <div className="logo">
-        <NavLink
-          to={"/home"}
-          className={({ isActive }) => (isActive ? "activeClassName" : "")}
-        >
-          <span>Ivan01admin</span>
-        </NavLink>
+        <span>Ivanadmin</span>
       </div>
 
       <ul className="center">
@@ -94,7 +95,8 @@ function SideBar() {
           <LoginOutlinedIcon className="icon" />
           <span>Profile</span>
         </li>
-        <li>
+
+        <li onClick={handleLogout}>
           <LoginOutlinedIcon className="icon" />
           <span>Logout</span>
         </li>
