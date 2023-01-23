@@ -1,4 +1,4 @@
-export const columns = [
+export const userColumns = [
   { field: "id", headerName: "ID", width: 100 },
   {
     field: "username",
@@ -49,86 +49,38 @@ export const columns = [
 const generateStatus = () => Math.round(Math.random() * 2)
 
 
-export const rows = [
+export const productsColumns = [
+  { field: "id", headerName: "ID", width: 100 },
   {
-    id: 1,
-    email: "ivansilatsa@gmal.com",
-    username: "Snow",
-    status: "active",
-    user: "Jon",
-    age: 35,
-    image: "c",
+    width: 130,
+    headerName: "Title",
+    field: "title",
   },
   {
-    id: 2,
-    username: "Lannister",
-    status: "passive",
-    user: "Cersei",
-    age: 42,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
+    width: 100,
+    headerName: "Price",
+    field: "price",
   },
   {
-    id: 3,
-    username: "Lannister",
-    status: "pending",
-    user: "Jaime",
-    age: 45,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
+    width: 100,
+    headerName: "Society",
+    field: "society",
   },
   {
-    id: 4,
-    username: "Stark",
-    status: "active",
-    user: "Arya",
-    age: 16,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
+    width: 150,
+    headerName: "Qauntity",
+    field: "qauntity",
   },
   {
-    id: 5,
-    username: "Targaryen",
-    status: "passive",
-    user: "Daenerys",
-    age: null,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
+    field: "image",
+    headerName: "Image",
+    width: 130,
+    renderCell: function (params) {
+      return (
+        <div className="cellWithImage">
+          <img src={params.row.image} className="cellImg" alt="Avatar" />
+        </div>
+      );
+    },
   },
-  {
-    id: 6,
-    username: "Melisandre",
-    status: "pending",
-    user: null,
-    age: 150,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
-  },
-  {
-    id: 7,
-    username: "Clifford",
-    status: "active",
-    user: "Ferrara",
-    age: 44,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
-  },
-  {
-    id: 8,
-    username: "Frances",
-    status: "passive",
-    user: "Rossini",
-    age: 36,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
-  },
-  {
-    id: 9,
-    username: "Roxie",
-    status: "pending",
-    user: "Harvey",
-    age: 65,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2DPwvSyCd5JPLbC6nahZBsaSaN6zVIFZOFSm35jcZA&s",
-    email: "ivansilatsa@gmal.com"
-  },
-];
+]

@@ -1,13 +1,14 @@
-import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
 import "./datatable.scss";
-import { columns as userColumns } from "../../data/usersData";
-import { Link, useNavigate } from "react-router-dom";
+import { userColumns, productsColumns } from "../../data/usersData";
 import { useThemeContextProvider } from "../../context/ThemeContext";
-import { useEffect, useState } from "react";
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { fireStore } from "../../firebase-config";
 import { useAuthContext } from "../../context/AuthContext";
+
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 
 function DataTable({ title = "Users List", path = "users" }) {
   const { themeMode } = useThemeContextProvider();
@@ -60,14 +61,17 @@ function DataTable({ title = "Users List", path = "users" }) {
   ];
 
   useEffect(() => {
-    const unsub = onSnapshot(collection(fireStore, "users"), function (snap) {
+    const unsub = onSnapshot(collection(fireStore, path), function (snap) {
       const newDta = [];
       snap.docs.forEach((elt) => newDta.push({ ...elt.data(), id: elt.id }));
       setData(newDta);
     });
 
     return unsub;
-  }, []);
+  }, [path]);
+
+  const dataSource = path === "users" ? userColumns : productsColumns;
+  const add = path === "users" ? "User" : "Product";
 
   return (
     <div className="DataTable">
@@ -75,14 +79,14 @@ function DataTable({ title = "Users List", path = "users" }) {
       <div className="head">
         <h1>{title}</h1>
         <div>
-          <Link to={"/users/new"}>Add new user</Link>
+          <Link to={`/${path}/new`}>Add new {add}</Link>
         </div>
       </div>
 
       <Box sx={{ height: 400, width: "100%" }} className={mode}>
         <DataGrid
           rows={data}
-          columns={userColumns.concat(action)}
+          columns={dataSource.concat(action)}
           pageSize={5}
           rowsPerPageOptions={[5]}
           checkboxSelection

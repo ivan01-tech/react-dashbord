@@ -7,12 +7,17 @@ import { useParams } from "react-router-dom";
 import { fireStore } from "../../firebase-config";
 import { useAuthContext } from "../../context/AuthContext";
 import notFoundImage from "../../assets/undraw_empty.svg";
+import { USERS } from "../../App";
+import { productsSource, userSource } from "../../data/formSourceData";
 
-function SinglePage({ data, path = "users" }) {
+function SinglePage({ path = "users" }) {
   const { id } = useParams();
   const { seterrMsg, setError, error, errMsg } = useAuthContext();
 
   const [Data, setData] = useState(null);
+  const dataSource = path === USERS ? userSource : productsSource;
+  const labels = dataSource.map((src) => src.label);
+  const ids = dataSource.map((src) => src.id);
 
   useEffect(() => {
     (async function () {
@@ -57,23 +62,13 @@ function SinglePage({ data, path = "users" }) {
                   <img src={Data?.image} alt="avatar" />
                 </div>
                 <div className="info">
-                  <h2 className="title-info">{Data?.username}</h2>
-                  <div>
-                    <strong>Email : </strong>
-                    <span>{Data?.email}</span>
-                  </div>
-                  <div>
-                    <strong>Phone : </strong>
-                    <span>{Data?.phone}</span>
-                  </div>
-                  <div>
-                    <strong>Adresse : </strong>
-                    <span>{Data?.address}</span>
-                  </div>
-                  <div>
-                    <strong>Country : </strong>
-                    <span>{Data?.country}</span>
-                  </div>
+                  <h2 className="title-info">{Data[ids[0]]}</h2>
+                  {labels.map((label, ind) => (
+                    <div>
+                      <strong>{label}: </strong>
+                      <span>{Data[ids[ind]]}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

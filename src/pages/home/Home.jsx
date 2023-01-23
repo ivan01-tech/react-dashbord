@@ -1,3 +1,4 @@
+import { PRODUCTS, USERS } from "../../App";
 import Card from "../../components/card/Card";
 import MyCharts from "../../components/charts/Charts";
 import TableList from "../../components/list/TableList";
@@ -7,8 +8,8 @@ function Home() {
   return (
     <div className="home">
       <section className="cards">
-        <Card type={"users"} />
-        <Card type={"balance"} />
+        <Card type={USERS} />
+        <Card type={PRODUCTS} />
         <Card type={"orders"} />
         <Card type={"earnings"} />
       </section>

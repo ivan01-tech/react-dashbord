@@ -1,10 +1,10 @@
 import "./newform.scss";
+import { useRef } from "react";
 import noAvatar from "../../assets/noimage.png";
 import cooseFile from "../../assets/imageChoose.png";
 import { useEffect, useState } from "react";
 import { useThemeContextProvider } from "../../context/ThemeContext";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { useRef } from "react";
 import {
   fireStore,
   firebaseAuth,
@@ -12,10 +12,16 @@ import {
 } from "../../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuthContext } from "../../context/AuthContext";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-function NewItem({ dataSource, title }) {
+function NewItem({ dataSource, title, path = "users" }) {
   const navigate = useNavigate();
   const { themeMode } = useThemeContextProvider();
   const { seterrMsg, setError, error, errMsg } = useAuthContext();
@@ -26,7 +32,6 @@ function NewItem({ dataSource, title }) {
   const [imageFile, setimageFile] = useState("");
   const [percent, setPercent] = useState(null);
   const [imageURL, setimageURL] = useState(null);
-  // const [error, seterror] = useState("");
 
   const chooseImageHandler = function (params) {
     setimageFile(params);
@@ -53,20 +58,24 @@ function NewItem({ dataSource, title }) {
     });
 
     try {
-      const credentials = await createUserWithEmailAndPassword(
-        firebaseAuth,
-        newData.email,
-        newData.password
-      );
-      const userRef = doc(fireStore, "users", credentials.user.uid);
-      await setDoc(userRef, newData);
-
-      console.log(newData);
-      console.log(credentials);
+      if (path === "users") {
+        const credentials = await createUserWithEmailAndPassword(
+          firebaseAuth,
+          newData.email,
+          newData.password
+        );
+        const userRef = doc(fireStore, path, credentials.user.uid);
+        await setDoc(userRef, { ...newData, timestamp: serverTimestamp() });
+      } else {
+        await addDoc(collection(fireStore, path), {
+          ...newData,
+          timestamp: serverTimestamp(),
+        });
+      }
 
       setError(false);
       seterrMsg("");
-      navigate("/users");
+      navigate(`/${path}`);
     } catch (err) {
       setError(true);
       seterrMsg(err.message);

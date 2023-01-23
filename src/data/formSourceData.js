@@ -65,8 +65,6 @@ export const productsSource = [
 		label: "Price",
 		id: "price",
 		placeholder: "230",
-		min: 1, max: 10000, step: 5
-
 	},
 	{
 		type: "text",

@@ -1,9 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/Home";
-import ProductsPage from "./pages/products/ListPage";
 import SideBar from "./components/sidebar/SideBar";
 import Navbar from "./components/navBar/navbar";
-import ProductsItem from "./pages/products/ProductsItem";
 import NewItem from "./components/new/NewItem";
 import DataTable from "./components/datatable/DataTable";
 import SinglePage from "./pages/single/SinglePage";
@@ -11,6 +9,9 @@ import { productsSource, userSource } from "./data/formSourceData";
 import { useThemeContextProvider } from "./context/ThemeContext";
 import LoginForm from "./pages/login/LoginForm";
 import RequiredAuth from "./components/auth/RequiredAuth";
+
+export const PRODUCTS = "products";
+export const USERS = "users";
 
 function App() {
   const { themeMode } = useThemeContextProvider();
@@ -26,26 +27,31 @@ function App() {
           {/* Protected Routes */}
           <Route path="/" element={<RequiredAuth />}>
             <Route index element={<HomePage />} />
-            <Route path="product">
-              <Route index element={<ProductsPage />} />
+            <Route path={PRODUCTS}>
+              <Route index element={<DataTable path={PRODUCTS} />} />
               <Route
                 path="new"
                 element={
                   <NewItem
+                    path={PRODUCTS}
                     dataSource={productsSource}
                     title={"Add new Product"}
                   />
                 }
               />
-              <Route path=":id" element={<ProductsItem />} />
+              <Route path=":id" element={<SinglePage path={PRODUCTS} />} />
             </Route>
 
-            <Route path="users">
+            <Route path={USERS}>
               <Route index element={<DataTable />} />
               <Route
                 path="new"
                 element={
-                  <NewItem dataSource={userSource} title={"Add new User"} />
+                  <NewItem
+                    dataSource={userSource}
+                    title={"Add new User"}
+                    path={USERS}
+                  />
                 }
               />
               <Route path=":id" element={<SinglePage />} />
